@@ -72,6 +72,8 @@ This means that I do **EXCLUDE** the following:
 4. tBodyGyroMean
 5. tBodyGyroJerkMean
 
+Features are normalized and bounded within [-1,1]
+
 Further reading is available here:
 
 [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
@@ -79,3 +81,4 @@ Further reading is available here:
 an online copy of the article is available here:
 
 http://www.icephd.org/sites/default/files/IWAAL2012.pdf
+
