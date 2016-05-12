@@ -111,6 +111,11 @@ X_test_raw <- read.table("X_test.txt", header = FALSE, skip=2, col.names = featu
 
 X_test_01 <- X_test_raw[grepl('mean|std', names(X_test_raw))]
 
+## Note: there is a variable "meanFreq" that isn't necessarly a mean or a standard deviation.  Remove
+## these variables
+
+X_test_02 <- X_test_01[!grepl('meanfreq', names(X_test_01))]
+
 ## E) /test/y_test_raw
 
         ## read in the data (we know from the documentation that these are the activities.  You can verify this
@@ -124,7 +129,7 @@ table(y_test_raw)
         
         ## i) Column bind the X_test_raw, y_test_raw, and subject data frames
 
-test_data_01 <- cbind(subject_test, y_test_raw, X_test_01)
+test_data_01 <- cbind(subject_test, y_test_raw, X_test_02)
 
         ## ii) Merge in the activity labels
 
@@ -132,7 +137,7 @@ test_data_02 <- merge(test_data_01, activity_labels, by.x = "activitycode", by.y
 
         ## ii) Rearange the data and drop the activity code (not necessary)
 
-test_data <- test_data_02[,c(2,89,3:88)]
+test_data <- test_data_02[,c(2,76,3:75)]
 
 ### Note: I inspected the contents of Inertial Signals.  It appears that, like the test data, there are 2945 
 ### observations in each file.  I assume that these are more granular observations.  Unfortunately, I have
@@ -169,6 +174,11 @@ X_train_raw <- read.table("X_train.txt", header = FALSE, skip=2, col.names = fea
 
 X_train_01 <- X_train_raw[grepl('mean|std', names(X_train_raw))]
 
+## Note: there is a variable "meanFreq" that isn't necessarly a mean or a standard deviation.  Remove
+## these variables
+
+X_train_02 <- X_train_01[!grepl('meanfreq', names(X_train_01))]
+
 ## E) /train/y_train_raw
 
 ## read in the data (we know from the documentation that these are the activities.  You can verify this
@@ -180,7 +190,7 @@ table(y_train_raw)
 
 ## i) Column bind the X_train_raw, y_train_raw, and subject data frames
 
-train_data_01 <- cbind(subject_train, y_train_raw, X_train_01)
+train_data_01 <- cbind(subject_train, y_train_raw, X_train_02)
 
 ## ii) Merge in the activity labels
 
@@ -188,7 +198,7 @@ train_data_02 <- merge(train_data_01, activity_labels, by.x = "activitycode", by
 
 ## ii) Rearange the data and drop the activity code (not necessary)
 
-train_data <- train_data_02[,c(2,89,3:88)]
+train_data <- train_data_02[,c(2,76,3:75)]
 
 ####################################################################################################
 ### STEP 3: Combine the Test and Training Data
